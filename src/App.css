@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 5rem;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+
+.board div {
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 3%;
+}
