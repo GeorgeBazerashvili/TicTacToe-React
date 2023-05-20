@@ -12,6 +12,7 @@ function Board() {
     [2, 5, 8],
   ];
 
+  const [happened, setHappened] = useState(false);
   const [board, setBoard] = useState(Array(9).fill(null));
   const [player, setPlayer] = useState("X");
   const [result, setResult] = useState(null);
@@ -26,6 +27,7 @@ function Board() {
         newBoard[c] == currentPlayer
       ) {
         setResult(`${currentPlayer} wins!`);
+        setHappened(true);
       }
     }
 
@@ -38,6 +40,7 @@ function Board() {
 
     if (draw) {
       setResult("draw!");
+      setHappened(true);
     }
   }
 
@@ -54,17 +57,25 @@ function Board() {
     setPlayer((prev) => (prev == "X" ? (prev = "O") : (prev = "X")));
   }, [board]);
 
+  function resetBoard() {
+    setHappened(false);
+    setBoard(Array(9).fill(null));
+    setPlayer("O");
+    setResult(null);
+  }
+
   return (
     <>
-      <div className="result">{result}</div>
       <section className="board">
+        {happened && <div className="result">{result}</div>}
         {board.map((value, index) => {
           return (
-            <div key={index} onClick={() => handleClick(index)}>
+            <div key={index} onClick={!happened && (() => handleClick(index))}>
               {value}
             </div>
           );
         })}
+        {happened && <button onClick={resetBoard}>Reset Game</button>}
       </section>
     </>
   );

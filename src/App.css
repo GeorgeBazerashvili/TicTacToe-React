@@ -14,6 +14,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
+  gap: 1rem;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -27,10 +28,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 0.5rem;
+}
+
+.board button {
+  position: absolute;
+  bottom: -3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0.1px 0.1px 10px white;
+  cursor: pointer;
+  outline: transparent;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.board button:hover,
+board button:focus {
+  background: rgb(167, 159, 159);
+  color: white;
 }
 
 .result {
   font-size: 3rem;
-  text-align: center;
-  margin-top: 3%;
+  position: absolute;
+  border: none !important;
+  top: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
